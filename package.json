@@ -1,0 +1,32 @@
+{
+  "name": "thalassa",
+  "version": "0.0.0",
+  "description": "A lightweight service registry that wraps Seaport",
+  "main": "index.js",
+  "scripts": {
+    "test": "jshint *.js --config .jshintrc && mocha test/test*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/PearsonEducation/Thalassa.git"
+  },
+  "keywords": [
+    "service",
+    "registry",
+    "haproxy"
+  ],
+  "author": "Mike Brevoort <mike.brevoort@pearson.com>",
+  "license": "TBD",
+  "readmeFilename": "README.md",
+  "gitHead": "a4a95abc9452603227d47e738f86b42977c27ad2",
+  "bugs": {
+    "url": "https://github.com/PearsonEducation/Thalassa/issues"
+  },
+  "devDependencies": {
+    "mocha": "~1.12.0",
+    "jshint": "~2.1.4"
+  },
+  "dependencies": {
+    "seaport": "~1.5.0"
+  }
+}

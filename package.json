@@ -6,6 +6,9 @@
   "scripts": {
     "test": "jshint *.js lib/**/*.js test/*.js --config .jshintrc && mocha test/test*"
   },
+  "bin": {
+    "thalassa-server": "./bin/server.js"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/PearsonEducation/Thalassa.git"
@@ -30,7 +33,8 @@
   },
   "dependencies": {
     "seaport": "~1.5.0",
-    "hapi": "~1.8.2"
+    "hapi": "~1.8.2",
+    "optimist": "~0.6.0"
   },
   "engines": {
     "node": ">0.10.x"

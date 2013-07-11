@@ -16,27 +16,25 @@ describe ('Harbor Module', function () {
       , API_PORT = null
       , API_HOST = localhost
       , server = null
+      , apiRoot = null
       ;
-
-    var portAuthority = null
-      , portAuthorityPort = 11201
-      , apiPort = 9000
-      , apiRoot = 'http://' + localhost + ':' + apiPort;
 
     before (function (done) {
 
       portfinder.getPort(function (err, port) {
         assert.ifError(err);
         PORT = port;
+        portfinder.basePort = 9000;
         portfinder.getPort(function (err, port) {
           assert.ifError(err);
           API_PORT = port;
+          apiRoot = 'http://' + API_HOST + ':' + API_PORT;
 
           server = new Server( {
             port: PORT,
             host: HOST,
-            apiPort: API_PORT,
-            apiHost: API_HOST
+            apiport: API_PORT,
+            apihost: API_HOST
           });
           done();
         });

@@ -208,6 +208,9 @@ describe ('Harbor Module', function () {
           assert.equal(port, body[0].port);
           assert.equal(meta.myMeta, body[0].myMeta);
           assert.equal(meta.myOtherMeta, body[0].myOtherMeta);
+
+          // also test query
+          assert.equal(client.query(name, version).length, 1);
           done();
         });
       }, 50);

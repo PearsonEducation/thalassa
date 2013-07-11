@@ -35,9 +35,7 @@ function log() {
 
 var opts = {
   port: argv.port,
-  host: argv.host,
-  apiport: argv.apiport,
-  apihost: argv.apihost
+  host: argv.host
 }
 
 

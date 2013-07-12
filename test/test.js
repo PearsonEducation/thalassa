@@ -62,7 +62,7 @@ describe ('Harbor Module', function () {
           assert.equal(2, body.length);
           done();
         });
-      }, 50);
+      }, 100);
     });
 
     it ('should 404 for unknown route', function (done) {
@@ -78,7 +78,7 @@ describe ('Harbor Module', function () {
           assert.equal(404, response.statusCode);
           done();
         });
-      }, 50);
+      }, 100);
     });
 
     it ('should return registrations by name', function (done) {
@@ -97,7 +97,7 @@ describe ('Harbor Module', function () {
           assert.equal('thalassa-api', body[0].role);
           done();
         });
-      }, 50);
+      }, 100);
     });
 
     it ('should return registrations by name and version', function (done) {
@@ -118,7 +118,7 @@ describe ('Harbor Module', function () {
           assert.equal(version, body[0].version);
           done();
         });
-      }, 50);
+      }, 100);
     });
 
     it ('should return nothing for query by unknown name', function (done) {
@@ -136,7 +136,7 @@ describe ('Harbor Module', function () {
           assert.equal(0, body.length);
           done();
         });
-      }, 50);
+      }, 100);
     });
 
     it ('should return search by known term', function (done) {
@@ -155,7 +155,7 @@ describe ('Harbor Module', function () {
           assert.equal(2, body.length);
           done();
         });
-      }, 50);
+      }, 100);
     });
 
 
@@ -211,7 +211,7 @@ describe ('Harbor Module', function () {
           assert.equal(client.query(name, version).length, 1);
           done();
         });
-      }, 50);
+      }, 100);
     });
 
     it ('should disconnect and reconnect properly', function (done) {
@@ -255,10 +255,10 @@ describe ('Harbor Module', function () {
                 assert.equal(port, body[0].port);
                 done();
               });
-            }, 20);
+            }, 100);
           });
-        }, 20);
-      }, 20);
+        }, 100);
+      }, 100);
     });
 
     it ('should register and unregister properly', function (done) {
@@ -300,9 +300,9 @@ describe ('Harbor Module', function () {
               assert.equal(0, body.length);
               done();
             });
-          }, 20);
+          }, 100);
         });
-      }, 20);
+      }, 100);
     });
 
   });

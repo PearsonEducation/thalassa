@@ -32,9 +32,10 @@
     "request": "~2.21.0"
   },
   "dependencies": {
-    "seaport": "~1.5.0",
+    "seaport": "~1.5.1",
     "hapi": "~1.8.2",
-    "optimist": "~0.6.0"
+    "optimist": "~0.6.0",
+    "rsa-json": "~0.1.0"
   },
   "engines": {
     "node": ">0.10.x"

@@ -15,6 +15,9 @@ var util = require('util')
               register: {
                 describe: 'name@x.x.x:port,name@x.x.x:port'
               },
+              key: {
+                describe: 'path to rsa-json file with public and private key'
+              },
               showhelp: {
                 alias: 'h'
               }
@@ -38,6 +41,7 @@ var opts = {
   host: argv.host
 }
 
+if (argv.key) opt.key = argv.key;
 
 var client = new Thalassa.Client(opts);
 

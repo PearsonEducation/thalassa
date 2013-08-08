@@ -35,7 +35,8 @@
     "seaport": "~1.5.1",
     "hapi": "~1.8.2",
     "optimist": "~0.6.0",
-    "rsa-json": "~0.1.0"
+    "rsa-json": "~0.1.0",
+    "cli-color": "~0.2.2"
   },
   "engines": {
     "node": ">0.10.x"

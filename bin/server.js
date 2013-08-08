@@ -23,6 +23,10 @@ var optimist = require('optimist')
               peerport: {
                 describe: 'optional thalassa port to peer with'
               },
+              debug: {
+                boolean: true,
+                describe: 'enabled debug logging'
+              },
               showhelp: {
                 alias: 'h'
               }
@@ -35,18 +39,6 @@ if (argv.h) {
   process.exit(0);
 }
 
+argv.log = require('../lib/defaultLogger')( (argv.debug == true) ? 'debug' : 'error' );
 var Thalassa = require('..');
-
-var opts = {
-  port: argv.port,
-  host: argv.host,
-  apiport: argv.apiport,
-  apihost: argv.apihost
-}
-
-if (argv.peerhost && argv.peerport) {
-  opts.peerhost = argv.peerhost;
-  opts.peerport = argv.peerport;
-}
-console.log(opts);
-var server = new Thalassa.Server(opts);
+var server = new Thalassa.Server(argv);

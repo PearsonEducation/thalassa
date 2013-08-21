@@ -19,7 +19,7 @@
     "haproxy"
   ],
   "author": "Mike Brevoort <mike.brevoort@pearson.com>",
-  "license": "TBD",
+  "license": "Apache2",
   "readmeFilename": "README.md",
   "gitHead": "a4a95abc9452603227d47e738f86b42977c27ad2",
   "bugs": {

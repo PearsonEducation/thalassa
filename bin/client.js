@@ -9,14 +9,15 @@ var util = require('util')
                 describe: 'host to bind to'
               },
               port: {
-                default : 5001,
+                default : 9000,
                 describe: 'port to bind to'
               },
               register: {
                 describe: 'name@x.x.x:port,name@x.x.x:port'
               },
-              key: {
-                describe: 'path to rsa-json file with public and private key'
+              debug: {
+                boolean: true,
+                describe: 'enabled debug logging'
               },
               showhelp: {
                 alias: 'h'
@@ -31,19 +32,9 @@ if (argv.h) {
   process.exit(0);
 }
 
-function log() {
-  var msg = util.format.apply(null, Array.prototype.slice.call(arguments));
-  console.log(new Date().toISOString(), ' - ', msg)
-}
+var log = argv.log = require('../lib/defaultLogger')( (argv.debug == true) ? 'debug' : 'error' );
 
-var opts = {
-  port: argv.port,
-  host: argv.host
-}
-
-if (argv.key) opt.key = argv.key;
-
-var client = new Thalassa.Client(opts);
+var client = new Thalassa.Client(argv);
 
 // TODO validate format of `register` option
 argv.register.split(',').forEach(function (nvp) {
@@ -53,12 +44,12 @@ argv.register.split(',').forEach(function (nvp) {
   var version = parts[0];
   var port = parts[1];
   client.register(name, version, port);
-  log('registering %s@%s on port %s', name, version, port);
+  log('info', util.format('registering %s@%s on port %s', name, version, port));
 })
 
-client.on('connect', function () { log('connected to thalassa server %s:%s', argv.host, argv.port);});
-client.on('disconnect', function () { log('disconnected');});
-client.on('close', function () { log('close');});
-client.on('synced  ', function () { log('synced');});
+// client.on('connect', function () { log('connected to thalassa server %s:%s', argv.host, argv.port);});
+// client.on('disconnect', function () { log('disconnected');});
+// client.on('close', function () { log('close');});
+// client.on('synced  ', function () { log('synced');});
 
-client.connect();
+client.on();

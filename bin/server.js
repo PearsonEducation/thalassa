@@ -14,14 +14,8 @@ var optimist = require('optimist')
                 describe: 'host to bind to for http api'
               },
               apiport: {
-                default : 9000,
+                default : 10000,
                 describe: 'port to bind to for http api'
-              },
-              peerhost: {
-                describe: 'optional thalassa host to peer with'
-              },
-              peerport: {
-                describe: 'optional thalassa port to peer with'
               },
               debug: {
                 boolean: true,

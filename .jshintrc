@@ -1,4 +1,6 @@
 {
     "laxcomma" : true,
-    "node"     : true
+    "node"     : true,
+    "esnext"   : true,
+    "multistr" : true
 }

@@ -1,5 +1,6 @@
 var assert = require('assert')
   , path = require('path')
+  , f = require('util').format
   , RedisData = require('../lib/server/RedisData')
   ;
 
@@ -23,7 +24,7 @@ describe ('Data Module', function () {
         port: 8080
       };
 
-      var expectedRegId = reg.name + '@' + reg.version + '|' + reg.host + ':' + reg.port;
+      var expectedRegId = f('/%s/%s/%s/%s', reg.name, reg.version, reg.host, reg.port);
 
       data.on('online', function (onlineReg) {
         if (onlineReg.name === reg.name) {
@@ -75,7 +76,7 @@ describe ('Data Module', function () {
         port: 8080
       };
 
-      var expectedRegId = reg.name + '@' + reg.version + '|' + reg.host + ':' + reg.port;
+      var expectedRegId = f('/%s/%s/%s/%s', reg.name, reg.version, reg.host, reg.port);
 
       data.on('offline', function (regId) {
         if (regId === expectedRegId) {

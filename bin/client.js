@@ -52,4 +52,4 @@ argv.register.split(',').forEach(function (nvp) {
 // client.on('close', function () { log('close');});
 // client.on('synced  ', function () { log('synced');});
 
-client.on();
+client.start();

@@ -6,11 +6,15 @@ var util = require('util')
             .options({
               host: {
                 default : '127.0.0.1',
-                describe: 'host to bind to'
+                describe: 'thalassa host'
               },
               port: {
+                default : 5001,
+                describe: 'socket port'
+              },
+              apiport: {
                 default : 9000,
-                describe: 'port to bind to'
+                describe: 'http api port'
               },
               register: {
                 describe: 'name@x.x.x:port,name@x.x.x:port'
@@ -46,10 +50,5 @@ argv.register.split(',').forEach(function (nvp) {
   client.register(name, version, port);
   log('info', util.format('registering %s@%s on port %s', name, version, port));
 })
-
-// client.on('connect', function () { log('connected to thalassa server %s:%s', argv.host, argv.port);});
-// client.on('disconnect', function () { log('disconnected');});
-// client.on('close', function () { log('close');});
-// client.on('synced  ', function () { log('synced');});
 
 client.start();

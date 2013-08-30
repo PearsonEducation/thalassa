@@ -14,7 +14,7 @@ var optimist = require('optimist')
                 describe: 'host to bind to for http api'
               },
               apiport: {
-                default : 10000,
+                default : 9000,
                 describe: 'port to bind to for http api'
               },
               debug: {

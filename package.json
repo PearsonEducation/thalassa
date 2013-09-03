@@ -31,17 +31,19 @@
     "portfinder": "~0.2.1",
     "request": "~2.21.0"
   },
+  "optionalDependencies": {
+    "hiredis": "~0.1.15"
+  },
   "dependencies": {
     "hapi": "~1.8.2",
     "optimist": "~0.6.0",
     "cli-color": "~0.2.2",
     "redis": "~0.8.4",
-    "hiredis": "~0.1.15",
-    "zmq": "~2.5.0",
     "ip": "~0.1.0",
     "request": "~2.27.0",
     "thalassa-registrations": "git+ssh://git@github.com:PearsonEducation/thalassa-registrations.git",
-    "thalassa-http-client": "git+ssh://git@github.com:PearsonEducation/thalassa-http-client.git"
+    "thalassa-http-client": "git+ssh://git@github.com:PearsonEducation/thalassa-http-client.git",
+    "axon": "~1.0.0"
   },
   "engines": {
     "node": ">0.10.x"

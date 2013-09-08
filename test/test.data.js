@@ -11,7 +11,7 @@ describe ('Data Module', function () {
 
     before(function (done) {
       data = new RedisData({ redisDatabase: 15});
-      data._clearDb(done);
+      data.clearDb(done);
     });
 
     it ('should create and delete registration explicitly', function (done) {

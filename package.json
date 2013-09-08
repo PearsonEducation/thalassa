@@ -22,7 +22,6 @@
   "author": "Mike Brevoort <mike.brevoort@pearson.com>",
   "license": "Apache2",
   "readmeFilename": "README.md",
-  "gitHead": "a4a95abc9452603227d47e738f86b42977c27ad2",
   "bugs": {
     "url": "https://github.com/PearsonEducation/Thalassa/issues"
   },
@@ -43,7 +42,6 @@
     "ip": "~0.1.0",
     "request": "~2.27.0",
     "thalassa-registrations": "git+ssh://git@github.com:PearsonEducation/thalassa-registrations.git",
-    "thalassa-http-client": "git+ssh://git@github.com:PearsonEducation/thalassa-http-client.git",
     "axon": "~1.0.0"
   },
   "engines": {

@@ -200,8 +200,12 @@ Additionally `meta.secondsToExpire` should be set to explicitly set the expirati
 
 ### DELETE `/registrations/{name}/{version}/{host}/{port}`
 
-Explicitly delete a registration, causing an `offline` event. 
+Explicitly delete a registration, causing an `offline` event.
 
 # Known Limitations and Roadmap
 
 Thalassa currently doesn't implement any type of authentication or authorization and at this point expects to be running on a trusted private network. This will be addressed in the future. Ultimately auth should be extensible and customizable. Suggestions and pull requests welcome!
+
+# License
+
+Licensed under Apache 2.0. See [LICENSE](https://github.com/PearsonEducation/thalassa/blob/master/LICENSE) file.

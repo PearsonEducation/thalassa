@@ -10,11 +10,11 @@ var util = require('util')
               },
               port: {
                 default : 5001,
-                describe: 'socket port'
+                describe: 'thalassa axon socket port'
               },
               apiport: {
                 default : 9000,
-                describe: 'http api port'
+                describe: 'thalassa http api port'
               },
               register: {
                 describe: 'name@x.x.x:port,name@x.x.x:port'

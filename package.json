@@ -7,7 +7,8 @@
     "test": "jshint *.js lib/**/*.js test/*.js --config .jshintrc && mocha test/test*"
   },
   "bin": {
-    "thalassa-server": "./bin/server.js"
+    "thalassa-server": "./bin/server.js",
+    "thalassa-client": "./bin/client.js"
   },
   "repository": {
     "type": "git",
@@ -46,6 +47,6 @@
     "axon": "~1.0.0"
   },
   "engines": {
-    "node": ">0.10.x"
+    "node": ">0.10.0"
   }
 }

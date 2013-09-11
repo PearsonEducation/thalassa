@@ -5,7 +5,7 @@ Thalassa is a lightweight service registry build primarily on [node.js](http://n
 
 This is the central module that includes the server registry and client. The registry uses a ping and expiration type approach. Clients register with the server and pass an optional `secondsToExpire` property telling the server when it is acceptable to expire the registration if the registration is not updated in that time. There is an internal "reaper" function that runs periodically to reap expired registrations. More on that later.
 
-![Thalassa npm](https://nodei.co/npm/thalassa.png)
+[![NPM](https://nodei.co/npm/thalassa.png)](https://nodei.co/npm/thalassa/)
 
 ### History
 
@@ -13,8 +13,6 @@ Thalassa is a second generation system, superseding what was otherwise knows as 
 
 In Greek mythology, Thalassa was the primeval spirit of the sea. In the fables of Aesop, Thalassa appears as a woman formed of sea water rising up from her native element. Thalassa was depicted in Roman-era mosaics as a woman half submerged in the sea, with crab-claw horns, clothed in bands of seaweed, and holding a ship's oar.<sup>[1](http://www.theoi.com/Protogenos/Thalassa.html)</sup>
 
-
-[![NPM](https://nodei.co/npm/thalassa.png)](https://nodei.co/npm/thalassa/)
 
 
 # Installation

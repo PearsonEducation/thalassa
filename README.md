@@ -118,6 +118,13 @@ Using the client from within a node.js application to register your service is s
     
 `opts.log` may be passed just like the server.
 
+### `updateSuccessful` and `updateFailed` Events
+
+The client will periodically check in with the Thalassa server according to `opts.updateFreq` (default 5000ms). Each registration will product a `updateSuccessful` or `updateFailed` event to be emitted.
+
+  client.on('updateSuccessful', function () {});
+  client.on('updateFailed', function (error) {});
+
 ### Subscriptions and `online` and `offline` Events
 
 If running as a module, you also have access to `subscribe` to `online` and `offline` events of certain applications. For example:

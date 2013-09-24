@@ -41,7 +41,7 @@
     "redis": "~0.8.4",
     "ip": "~0.1.0",
     "request": "~2.27.0",
-    "thalassa-registrations": "git+ssh://git@github.com:PearsonEducation/thalassa-registrations.git",
+    "thalassa-registrations": "~0.1.0",
     "axon": "~1.0.0"
   },
   "engines": {

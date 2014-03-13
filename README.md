@@ -9,7 +9,7 @@ This is the central module that includes the server registry and client. The reg
 
 ### History
 
-Thalassa is a second generation system, superseding what was otherwise knows as "Spindrift" inside of [Pearson](http://www.pearson.com/). Spindrift leaned heavily on [@substack](https://github.com/substack)'s Seaport module. Incidentally, Seaport was the original inspiration for the aquatic theme of Spindrift and Thalassa. 
+Thalassa is a second generation system, superseding what was otherwise knows as "Spindrift" inside of [Pearson](http://www.pearson.com/). Spindrift leaned heavily on [@substack](https://github.com/substack)'s Seaport module. Incidentally, Seaport was the original inspiration for the aquatic theme of Spindrift and Thalassa.
 
 In Greek mythology, Thalassa was the primeval spirit of the sea. In the fables of Aesop, Thalassa appears as a woman formed of sea water rising up from her native element. Thalassa was depicted in Roman-era mosaics as a woman half submerged in the sea, with crab-claw horns, clothed in bands of seaweed, and holding a ship's oar.<sup>[1](http://www.theoi.com/Protogenos/Thalassa.html)</sup>
 
@@ -18,26 +18,26 @@ In Greek mythology, Thalassa was the primeval spirit of the sea. In the fables o
 # Installation
 
     npm install thalassa
-    
+
 or globally
-    
+
     npm install -g thalassa
-    
+
 # Running the Server
 
 The Thalassa server and client may be run from the command line or embedded as a module within your application.
 
 ## Running from Command Line
-    
+
 Assuming Redis is installed and running, start the thalassa server with default options:
 
     ./node_modules/.bin/thalassa-server --debug
-    
+
 or
 
     thalassa-server --debug
 
-    
+
 ### Server Command Line Options
 
     thalassa-server --help
@@ -58,19 +58,19 @@ or
 The same options above (except `debug`) may be passed by properties set in the `opts` object. For example using `new Thalassa.Server(opts)`:
 
     var Thalassa = require('thalassa');
-    
+
     var server = new Thalassa.Server({
       port: 4444,
       apiport: 4445,
       host: 'localhost'
     });
-    
+
 In addition `opts.log` may be optionally set to your own function to handle logging. `opts.log` expects this signature: `function log (level, message, object){}`. `level` will be one of `debug`, `info`, and `error`. `message` is a string and `object` is an optional object with key value pairs. Of `opts.log` is not passed, the module will be quiet.
 
 
 # Running the Client
 
-The client can be run any of three ways. 
+The client can be run any of three ways.
 
 1. From the command-line
 2. As a module
@@ -83,39 +83,42 @@ Why would you do this? Let's say you have an existing legacy Java application th
 For example, if Thalassa is installed globally (other wise `./node_modules/.bin/thalassa-client):
 
     thalassa-client --register myapp@1.0.0:8080 --debug
-    
+
 This registers the application named `my app` at version `1.0.0` that's on the current host on port `8080`. The client will continue to ping the Thalassa server with updates.
 
 ### Client Command Line Options
 
     thalassa-client --help
     Options:
-      --host      thalassa host                    [default: "127.0.0.1"]
-      --port      thalassa axon socket port        [default: 5001]
-      --apiport   thalassa http api port           [default: 9000]
-      --register  name@x.x.x:port,name@x.x.x:port  [required]
-      --debug     enabled debug logging
+      --host           thalassa host                                                    [default: "127.0.0.1"]
+      --port           thalassa axon socket port                                        [default: 5001]
+      --apiport        thalassa http api port                                           [default: 9000]
+      --register       name@x.x.x:port,name@x.x.x:port                                  [required]
+      --secsToExpire   default time in seconds for a thalassa registration to be valid  [default: 10]
+      --updateFreq     time frequency in ms to ping the thalassa server                 [default: 5000]
+      --updateTimeout  time in ms to wait for a registrion request to respond           [default: 2500]
+      --debug          enabled debug logging
 
 ## Client as an Embedded Module
 
 Using the client from within a node.js application to register your service is simple. Pass options via the `opts` object like `new Thalassa.Client(opts)`:
 
     var Thalassa = require('thalassa');
-    
+
     var client = new Thalassa.Client({
       port: 4444,
       apiport: 4445,
       host: 'localhost'
     });
-    
+
     client.register('myapp', '1.0.0', 8080);
-    
+
     // start reporting registrations to the server
     client.start();
 
     // stop reporting registrations to the server
     client.stop();
-    
+
 `opts.log` may be passed just like the server.
 
 ### `updateSuccessful` and `updateFailed` Events
@@ -136,14 +139,14 @@ If running as a module, you also have access to `subscribe` to `online` and `off
 Alternatively for all versions of `myapp`:
 
     client.subscribe('myapp');
-    
+
 Or every service registration:
 
     client.subscribe();
 
 ### Querying Registrations
 
-Also as a module, you can use the client API to query for registrations. 
+Also as a module, you can use the client API to query for registrations.
 
     client.getRegistrations('myapp', '1.0.0', function (err, registrations) {
         // registrations is an Array of Registrations
@@ -163,7 +166,7 @@ You can also pass metadata with any registration as a fourth parameter. This can
     };
     client.register('myapp', '1.0.0', 8080, meta)
 
-## HTTP Client 
+## HTTP Client
 
 The Thalassa server exposes a simple HTTP API so it's not necessary to use the `node.js` client and any application that's capable of calling HTTP can participate as an application in the system. See the HTTP API.
 
@@ -200,9 +203,9 @@ The Thalassa client will automatically add `meta.pid` and the server will automa
 
 Create or update a registration.
 
-The BODY of the POST should be `application/json` and will be added to `meta`. 
+The BODY of the POST should be `application/json` and will be added to `meta`.
 
-Additionally `meta.secondsToExpire` should be set to explicitly set the expiration time of the registration. In essence you are telling the Thalassa server, if you don't hear back from me in so many seconds, expire my registration and fire an `offline` event. This properly allows the client to tune how often they poll balanced with how long they are willing to accept stale registration data. If you set `secondsToExpire` to `300` then you may poll every ten minutes, but if your service goes down or is underplayed, consumers won't know it for at most `300` seconds. 
+Additionally `meta.secondsToExpire` should be set to explicitly set the expiration time of the registration. In essence you are telling the Thalassa server, if you don't hear back from me in so many seconds, expire my registration and fire an `offline` event. This properly allows the client to tune how often they poll balanced with how long they are willing to accept stale registration data. If you set `secondsToExpire` to `300` then you may poll every ten minutes, but if your service goes down or is underplayed, consumers won't know it for at most `300` seconds.
 
 ### DELETE `/registrations/{name}/{version}/{host}/{port}`
 

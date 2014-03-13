@@ -19,6 +19,18 @@ var util = require('util')
               register: {
                 describe: 'name@x.x.x:port,name@x.x.x:port'
               },
+              secsToExpire: {
+                default : 10,
+                describe: 'default time in seconds for a thalassa registration to be valid'
+              },
+              updateFreq: {
+                default : 5000,
+                describe: 'time frequency in ms to ping the thalassa server'
+              },
+              updateTimeout: {
+                default : 2500,
+                describe: 'time in ms to wait for a registrion request to respond'
+              },
               debug: {
                 boolean: true,
                 describe: 'enabled debug logging'

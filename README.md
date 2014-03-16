@@ -211,6 +211,10 @@ Additionally `meta.secondsToExpire` should be set to explicitly set the expirati
 
 Explicitly delete a registration, causing an `offline` event.
 
+### STATUS `status`
+
+Returns basic status with thalassa version, memory usage, uptime and registrationsPerSecond stats.
+
 # Known Limitations and Roadmap
 
 Thalassa currently doesn't implement any type of authentication or authorization and at this point expects to be running on a trusted private network. This will be addressed in the future. Ultimately auth should be extensible and customizable. Suggestions and pull requests welcome!

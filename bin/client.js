@@ -20,11 +20,11 @@ var util = require('util')
                 describe: 'name@x.x.x:port,name@x.x.x:port'
               },
               secsToExpire: {
-                default : 10,
+                default : 60,
                 describe: 'default time in seconds for a thalassa registration to be valid'
               },
               updateFreq: {
-                default : 5000,
+                default : 20000,
                 describe: 'time frequency in ms to ping the thalassa server'
               },
               updateTimeout: {

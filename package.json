@@ -42,7 +42,8 @@
     "ip": "~0.1.0",
     "request": "~2.27.0",
     "thalassa-registrations": "~0.1.0",
-    "axon": "~1.0.0"
+    "axon": "~1.0.0",
+    "measured": "^0.1.3"
   },
   "engines": {
     "node": ">0.10.0"

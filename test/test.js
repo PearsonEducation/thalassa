@@ -30,7 +30,7 @@ describe ('Thalassa', function () {
            assert.ifError(err);
            API_PORT = port;
            apiRoot = 'http://' + API_HOST + ':' + API_PORT;
-		   server = new Server( {
+           server = new Server( {
              port: PORT,
              host: HOST,
              apiport: API_PORT,
@@ -42,7 +42,7 @@ describe ('Thalassa', function () {
      });
 
      after (function () {
-		server.close();
+       server.close();
      });
 
 
@@ -51,7 +51,7 @@ describe ('Thalassa', function () {
 
        //need to wait until it comes up
        setTimeout(function () {
-		request({
+         request({
            uri: apiRoot + '/registrations',
            json: true
          }, function (error, response, body) {
@@ -93,7 +93,7 @@ describe ('Thalassa', function () {
            assert.ifError(error);
            assert.equal(200, response.statusCode);
 
-		   //both the api port and axon port get registered
+           //both the api port and axon port get registered
            assert.equal(2, body.length);
            assert.equal('thalassa', body[0].name);
            done();
@@ -114,7 +114,7 @@ describe ('Thalassa', function () {
            assert.ifError(error);
            assert.equal(200, response.statusCode);
 
-	       //both the api port and the axon port get registred
+           //both the api port and the axon port get registred
            assert.equal(2, body.length);
            assert.equal('thalassa', body[0].name);
            assert.equal(version, body[0].version);
@@ -173,11 +173,11 @@ describe ('Thalassa', function () {
            assert.equal(meta.myOtherMeta, body[0].meta['myOtherMeta']);
 
            //also test get registrations
-		   client.getRegistrations(name, version, function(err,regs){
-		   		assert.ifError(err);
-				assert.equal(regs.length, 1);
-				done();
-		   });
+           client.getRegistrations(name, version, function(err,regs){
+             assert.ifError(err);
+             assert.equal(regs.length, 1);
+             done();
+           });
          });
        }, 100);
      });
@@ -196,9 +196,9 @@ describe ('Thalassa', function () {
 
        client.register(name, version, port);
        setTimeout(function() {
-       	 client.stop();
-		 setTimeout(function() {
-		   request({
+         client.stop();
+         setTimeout(function() {
+           request({
              uri: apiRoot + '/registrations/' + name +'/'+version,
              json: true
            }, function (error, response, body) {
@@ -206,7 +206,7 @@ describe ('Thalassa', function () {
              assert.equal(200, response.statusCode);
              assert.equal(0, body.length);
              
-			 client.start();
+             client.start();
              setTimeout(function() {
                request({
                  uri: apiRoot + '/registrations/' + name +'/'+version,
@@ -219,7 +219,7 @@ describe ('Thalassa', function () {
                  assert.equal(name, body[0].name);
                  assert.equal(version, body[0].version);
                  assert.equal(port, body[0].port);
-				 done();
+                 done();
                });
              }, 100);
            });
@@ -263,7 +263,7 @@ describe ('Thalassa', function () {
                assert.ifError(error);
                assert.equal(200, response.statusCode);
                assert.equal(0, body.length);
-			   done();
+               done();
              });
            }, 100);
          });

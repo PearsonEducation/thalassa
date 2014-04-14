@@ -5,7 +5,7 @@ var assert = require('assert')
   , Server = require('..').Server
   , Client = require('..').Client
   ;
-  
+
 
 describe ('Thalassa', function () {
 
@@ -34,7 +34,8 @@ describe ('Thalassa', function () {
              port: PORT,
              host: HOST,
              apiport: API_PORT,
-             apihost: API_HOST
+             apihost: API_HOST,
+             reaperFreq: 100
            });
            done();
          });
@@ -58,8 +59,9 @@ describe ('Thalassa', function () {
            assert.ifError(error);
            assert.equal(200, response.statusCode);
 
-           //Thalassa checks in on itself twice
-           assert.equal(2, body.length);
+           var thalassas = body.filter(function (it) { return (it.name === 'thalassa'); });
+
+           assert.equal(1, thalassas.length);
            done();
          });
        }, 100);
@@ -93,8 +95,7 @@ describe ('Thalassa', function () {
            assert.ifError(error);
            assert.equal(200, response.statusCode);
 
-           //both the api port and axon port get registered
-           assert.equal(2, body.length);
+           assert.equal(1, body.length);
            assert.equal('thalassa', body[0].name);
            done();
          });
@@ -114,8 +115,7 @@ describe ('Thalassa', function () {
            assert.ifError(error);
            assert.equal(200, response.statusCode);
 
-           //both the api port and the axon port get registred
-           assert.equal(2, body.length);
+           assert.equal(1, body.length);
            assert.equal('thalassa', body[0].name);
            assert.equal(version, body[0].version);
            done();
@@ -169,8 +169,8 @@ describe ('Thalassa', function () {
            assert.equal(name, body[0].name);
            assert.equal(version, body[0].version);
            assert.equal(port, body[0].port);
-           assert.equal(meta.myMeta, body[0].meta['myMeta']);
-           assert.equal(meta.myOtherMeta, body[0].meta['myOtherMeta']);
+           assert.equal(meta.myMeta, body[0].meta.myMeta);
+           assert.equal(meta.myOtherMeta, body[0].meta.myOtherMeta);
 
            //also test get registrations
            client.getRegistrations(name, version, function(err,regs){
@@ -188,13 +188,14 @@ describe ('Thalassa', function () {
          , version = '2.0.0'
          , host = '10.10.10.10'
          , port = 8412
+         , secondsToExpire = 1
          ;
        var client = new Client({
          host: HOST,
          port: PORT
        });
 
-       client.register(name, version, port);
+       client.register(name, version, port, { secondsToExpire: secondsToExpire});
        setTimeout(function() {
          client.stop();
          setTimeout(function() {
@@ -205,7 +206,7 @@ describe ('Thalassa', function () {
              assert.ifError(error);
              assert.equal(200, response.statusCode);
              assert.equal(0, body.length);
-             
+
              client.start();
              setTimeout(function() {
                request({
@@ -223,7 +224,7 @@ describe ('Thalassa', function () {
                });
              }, 100);
            });
-         }, 100);
+         }, secondsToExpire*1000);
        }, 100);
      });
 

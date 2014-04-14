@@ -14,6 +14,7 @@ Thalassa is a second generation system, superseding what was otherwise knows as 
 In Greek mythology, Thalassa was the primeval spirit of the sea. In the fables of Aesop, Thalassa appears as a woman formed of sea water rising up from her native element. Thalassa was depicted in Roman-era mosaics as a woman half submerged in the sea, with crab-claw horns, clothed in bands of seaweed, and holding a ship's oar.<sup>[1](http://www.theoi.com/Protogenos/Thalassa.html)</sup>
 
 
+
 # Installation
 
     npm install thalassa

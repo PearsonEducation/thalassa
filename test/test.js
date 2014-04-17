@@ -134,13 +134,82 @@ describe ('Thalassa', function () {
          }, function (error, response, body) {
            assert.ifError(error);
            assert.equal(200, response.statusCode);
-
            assert.equal(0, body.length);
            done();
          });
        }, 100);
      });
-
+      
+     it( 'should register and receive one online event if metadata stays the same', function (done) {
+       this.timeout(5000);
+       var eventCount = 0;
+       var name = 'foobar'
+         , version = '1.0.0'
+         , host = '10.10.10.10'
+         , port = 8411
+         , meta = { myMeta: 'foo', myOtherMeta: 1 }
+         ;
+       var client = new Client({
+         host: HOST,
+         port: PORT,
+         updateFreq: 2000
+       });
+       client.on('online', function(reg){
+        eventCount++; 
+        setInterval(function() {
+           if(eventCount == 1){
+             assert.equal(reg.name,name);
+             assert.equal(reg.version,version);
+             assert.equal(reg.port, port);
+             assert.deepEqual(reg.meta, meta); 
+             done();
+           }
+         },3000);
+       });
+       client.subscribe(name, version);
+       client.register(name, version, port, meta);
+       client.start(); 
+     });  
+   
+     it( 'should register, receive an online event, unregister, then receive another online event', function (done) {
+       this.timeout(5000);
+       var eventCount = 0;
+       var offlineRecieved = false;
+       var name = 'foobar'
+         , version = '1.0.0'
+         , host = '10.10.10.10'
+         , port = 8411
+         , meta = { myMeta: 'foo', myOtherMeta: 1 }
+         ;
+       var client = new Client({
+         host: HOST,
+         port: PORT,
+         updateFreq: 2000
+       });
+       client.on('online', function(reg){
+        eventCount++;
+        if(eventCount == 1){
+          assert.equal(reg.name,name);
+          assert.equal(reg.version,version);
+          assert.equal(reg.port, port);
+          assert.deepEqual(reg.meta, meta); 
+          client.unregister(name,version,port);
+        }
+        else if(offlineReceived){
+          assert.equal(reg.name,name);
+          assert.equal(reg.version,version);
+          assert.equal(reg.port, port);
+          done();
+        }
+       });
+       client.on('offline', function(reg){
+         offlineReceived = true;
+       });
+       client.subscribe(name, version);
+       client.register(name, version, port, meta);
+       client.start();
+     });
+ 
      it ('should register and find custom registration', function (done) {
        this.timeout(5000);
        var name = 'foo'

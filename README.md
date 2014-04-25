@@ -89,14 +89,14 @@ This registers the application named `my app` at version `1.0.0` that's on the c
 
     thalassa-client --help
       Options:
-        --host          thalassa host                                                    [default: "127.0.0.1"]
-        --port          thalassa axon socket port                                        [default: 5001]
-        --apiport       thalassa http api port                                           [default: 9000]
-        --register      name@x.x.x:port,name@x.x.x:port                                  [required]
-        --secsToExpire  default time in seconds for a thalassa registration to be valid  [default: 60]
-        --updateFreq    time frequency in ms to ping the thalassa server                 [default: 20000]
-        --updateTimeout time in ms to wait for a registrion request to respond           [default: 2500]
-        --debug         enabled debug logging
+        --host           thalassa host                                                    [default: "127.0.0.1"]
+        --port           thalassa axon socket port                                        [default: 5001]
+        --apiport        thalassa http api port                                           [default: 9000]
+        --register       name@x.x.x:port,name@x.x.x:port                                  [required]
+        --secsToExpire   default time in seconds for a thalassa registration to be valid  [default: 60]
+        --updateFreq     time frequency in ms to ping the thalassa server                 [default: 20000]
+        --updateTimeout  time in ms to wait for a registrion request to respond           [default: 2500]
+        --debug          enabled debug logging
 
 ## Client as an Embedded Module
 

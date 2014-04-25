@@ -35,10 +35,6 @@ var util = require('util')
                 boolean: true,
                 describe: 'enabled debug logging'
               },
-              attemptsBeforeRetry: {
-                default: 5,
-                describe: 'number of checkins to skip while waiting for a pending checkin'
-              },
               showhelp: {
                 alias: 'h'
               }

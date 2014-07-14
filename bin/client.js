@@ -29,7 +29,7 @@ var util = require('util')
               },
               updateTimeout: {
                 default : 2500,
-                describe: 'time in ms to wait for a registrion request to respond'
+                describe: 'time in ms to wait for a registration request to respond'
               },
               debug: {
                 boolean: true,

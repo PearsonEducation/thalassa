@@ -35,7 +35,7 @@
     "hiredis": "~0.1.15"
   },
   "dependencies": {
-    "hapi": "~2.0.0",
+    "hapi": "~1.8.2",
     "optimist": "~0.6.0",
     "cli-color": "~0.2.2",
     "redis": "~0.8.4",

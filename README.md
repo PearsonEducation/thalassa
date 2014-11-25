@@ -28,7 +28,7 @@ The Thalassa server and client may be run from the command line or embedded as a
 
 ## Running from Command Line
 
-Assuming Redis is installed and running, start the thalassa server with default options:
+Assuming Redis is installed (version >= 2.6 required due to use of EVALHSA command) and running, start the thalassa server with default options:
 
     ./node_modules/.bin/thalassa-server --debug
 

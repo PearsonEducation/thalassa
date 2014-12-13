@@ -50,8 +50,8 @@ client.start();
 
 
 //
-// Wait a second and then query to make suer our registration exists, via the HTTP
-// API and through the client (which also used the HTTP api)
+// Wait a second and then query to make sure our registration exists, via the HTTP
+// API and through the client (which also uses the HTTP api)
 //
 setTimeout(function() {
   //
